@@ -1,3 +1,4 @@
+# utils/helpers.py
 from datetime import datetime
 
 def berechne_zeit(d, K):
@@ -6,7 +7,7 @@ def berechne_zeit(d, K):
 
     :param d: Eindringtiefe (in Metern)
     :param K: Materialkonstante (K > 0)
-    :return: Dictionary mit berechneter Zeit, Kategorie und Zeitstempel
+    :return: Dictionary mit berechneter Zeit, Timestamp und Nachricht
     """
     if K > 0:
         t = (d / K) ** 2
@@ -21,4 +22,5 @@ def berechne_zeit(d, K):
             "timestamp": datetime.now(),
             "message": "Ungültige Eingabe. K darf nicht 0 sein."
         }
+
         
