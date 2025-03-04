@@ -1,7 +1,7 @@
 import streamlit as st
 
 # Seiten-Layout
-st.set_page_config(page_title="Dichte-Rechner für Feststoffe", page_icon="🪨", layout="centered")
+st.set_page_config(page_title="Dichte-Rechner für Feststoffe", page_icon="📏",layout="centered")
 
 # Stil-Verbesserung mit Markdown und CSS
 st.markdown(
