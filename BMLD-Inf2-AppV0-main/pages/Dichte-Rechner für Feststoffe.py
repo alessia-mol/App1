@@ -1,7 +1,7 @@
 import streamlit as st
 
 # Seiten-Layout
-st.set_page_config(page_title="Dichte-Rechner für Feststoffe", page_icon="📏",layout="centered")
+st.set_page_config(page_title="Dichte-Rechner für Feststoffe", page_icon="📏", layout="centered")
 
 # Stil-Verbesserung mit Markdown und CSS
 st.markdown(
@@ -17,7 +17,7 @@ st.markdown(
 )
 
 # Titel
-st.markdown("<h1 class='title'>🪨 Dichte-Rechner für Feststoffe</h1>", unsafe_allow_html=True)
+st.markdown("<h1 class='title'>📏 Dichte-Rechner für Feststoffe</h1>", unsafe_allow_html=True)
 
 # Einführungstext
 st.markdown("""
@@ -45,3 +45,12 @@ with st.form("density_form"):
             st.success(f"✅ Die berechnete Dichte beträgt: {density:.2f} kg/m³")
         else:
             st.error("⚠️ Das Volumen muss größer als 0 sein!")
+
+# Fun Fact oder Wissenswertes
+st.markdown("""
+### 🧐 Wussten Sie schon?
+- Gold hat eine der höchsten Dichten von Metallen: 19.300 kg/m³.
+- Holzarten haben sehr unterschiedliche Dichten – Eiche ist viel dichter als Kiefer.
+- Materialien mit hoher Dichte werden oft für Schutzkleidung oder Strahlenschutz verwendet.
+""")
+
