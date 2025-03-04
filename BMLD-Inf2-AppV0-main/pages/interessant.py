@@ -1,6 +1,4 @@
 import streamlit as st
-import matplotlib.pyplot as plt
-import numpy as np
 
 # Seiten-Layout
 st.set_page_config(page_title="Dichte-Rechner für Feststoffe", page_icon="📏", layout="centered")
@@ -13,7 +11,6 @@ st.markdown(
     .title { text-align: center; color: #8B4513; font-size: 28px; }
     .stTextInput, .stNumberInput, .stButton { border-radius: 10px; }
     .info-box { background-color: #d2b48c; padding: 10px; border-radius: 10px; color: #4b2e2e; }
-    .chart-container { text-align: center; }
     </style>
     """,
     unsafe_allow_html=True
@@ -46,18 +43,6 @@ with st.form("density_form"):
         if volume > 0:
             density = mass / volume
             st.success(f"✅ Die berechnete Dichte beträgt: {density:.2f} kg/m³")
-            
-            # Visualisierung
-            fig, ax = plt.subplots()
-            materials = ["Aluminium", "Eisen", "Gold", "Kupfer", "Ihr Material"]
-            densities = [2700, 7874, 19300, 8960, density]
-            colors = ["blue", "gray", "gold", "brown", "red"]
-            
-            ax.bar(materials, densities, color=colors)
-            ax.set_ylabel("Dichte (kg/m³)")
-            ax.set_title("Vergleich der Dichte mit bekannten Materialien")
-            
-            st.pyplot(fig)
         else:
             st.error("⚠️ Das Volumen muss größer als 0 sein!")
 
@@ -68,3 +53,4 @@ st.markdown("""
 - Holzarten haben sehr unterschiedliche Dichten – Eiche ist viel dichter als Kiefer.
 - Materialien mit hoher Dichte werden oft für Schutzkleidung oder Strahlenschutz verwendet.
 """)
+
