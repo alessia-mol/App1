@@ -1,5 +1,12 @@
 import streamlit as st
-from utils import helpers  # Importiere die Funktion aus helpers.py
+
+# Funktion zur Berechnung der Zeit
+def berechne_zeit(d, K):
+    # Überprüfen, ob K größer als 0 ist, um eine Division durch Null zu vermeiden
+    if K > 0:
+        return (d / K) ** 2
+    else:
+        return None
 
 def main():
     st.title("Penetrationszeit-Rechner")
@@ -22,7 +29,7 @@ def main():
         
         if submitted:
             # Berechnung der Zeit
-            t = helpers.berechne_zeit(d, K)  # Verwende die Funktion aus helpers.py
+            t = berechne_zeit(d, K)
             if t is not None:
                 st.write(f"Die benötigte Zeit beträgt: {t:.4f} s")
             else:
@@ -30,10 +37,4 @@ def main():
 
 if __name__ == "__main__":
     main()
-
-    
-
-    
-    
-
     
