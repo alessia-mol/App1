@@ -10,7 +10,7 @@ def berechne_zeit(d, K):
 def main():
     st.title("Penetrationszeit-Rechner")
     st.write("Berechnung der Zeit basierend auf der Formel t = (d / K)²")
-    st.write("Autoren: Max Mustermann, Erika Musterfrau")
+    st.write("Autoren: Noëlle Keel, Alessia Molignini")
     st.write("E-Mails: max@example.com, erika@example.com")
     
     with st.expander("Erklärung der Formel"):
@@ -34,6 +34,8 @@ def main():
 
 if __name__ == "__main__":
     main()
+    
+    
     
 
     
