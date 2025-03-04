@@ -1,6 +1,4 @@
 import streamlit as st
-import math
-import matplotlib.pyplot as plt
 
 def berechne_zeit(d, K):
     if K > 0:
@@ -27,17 +25,6 @@ def main():
             t = berechne_zeit(d, K)
             if t is not None:
                 st.write(f"Die benötigte Zeit beträgt: {t:.4f} s")
-                
-                # Plot der Beziehung zwischen d und t
-                fig, ax = plt.subplots()
-                d_values = [i / 10 for i in range(1, 101)]
-                t_values = [(di / K) ** 2 for di in d_values]
-                ax.plot(d_values, t_values, label=f"K={K}")
-                ax.set_xlabel("Eindringtiefe d (m)")
-                ax.set_ylabel("Zeit t (s)")
-                ax.set_title("Zusammenhang zwischen d und t")
-                ax.legend()
-                st.pyplot(fig)
             else:
                 st.write("Ungültige Eingabe. K darf nicht 0 sein.")
 
