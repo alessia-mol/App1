@@ -26,7 +26,7 @@ def main():
 
     with st.form("penetration_time_form"):
 
-        d = st.number_input("Eindringtiefe d (m)", min_value=0.0, format="%.4f")
+        d = st.number_input("Eindringtiefe d (mm)", min_value=0.0, format="%.4f")
 
         K = st.slider("K-Wert", min_value=0.0001, max_value=10.0, value=1.0, step=0.0001)
 
@@ -38,7 +38,7 @@ def main():
 
             if t is not None:
 
-                st.write(f"Die benötigte Zeit beträgt: {t:.4f} s")
+                st.write(f"Die benötigte Zeit beträgt: {t:.6f} h")
 
             else:
 
