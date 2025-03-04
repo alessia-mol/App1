@@ -1,11 +1,5 @@
 import streamlit as st
-
-def berechne_zeit(d, K):
-    # Überprüfen, ob K größer als 0 ist, um eine Division durch Null zu vermeiden
-    if K > 0:
-        return (d / K) ** 2
-    else:
-        return None
+from utils import helpers  # Importiere die Funktion aus helpers.py
 
 def main():
     st.title("Penetrationszeit-Rechner")
@@ -13,9 +7,11 @@ def main():
     st.write("Autoren: Max Mustermann, Erika Musterfrau")
     st.write("E-Mails: max@example.com, erika@example.com")
     
+    # Erklärung der Formel in einem Expander
     with st.expander("Erklärung der Formel"):
         st.write("Die Formel t = (d / K)² beschreibt den Zusammenhang zwischen Eindringtiefe, einer Materialkonstanten K und der benötigten Zeit.")
     
+    # Formular für Eingaben der Benutzerdaten
     with st.form("penetration_time_form"):
         # Benutzer gibt die Eindringtiefe und den K-Wert ein
         d = st.number_input("Eindringtiefe d (m)", min_value=0.0, format="%.4f")
@@ -26,7 +22,7 @@ def main():
         
         if submitted:
             # Berechnung der Zeit
-            t = berechne_zeit(d, K)
+            t = helpers.berechne_zeit(d, K)  # Verwende die Funktion aus helpers.py
             if t is not None:
                 st.write(f"Die benötigte Zeit beträgt: {t:.4f} s")
             else:
@@ -34,6 +30,7 @@ def main():
 
 if __name__ == "__main__":
     main()
+
     
 
     
