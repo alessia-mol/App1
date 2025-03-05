@@ -1,4 +1,5 @@
 import streamlit as st
+import pandas as pd
 
 # Seiten-Layout
 st.set_page_config(page_title="Dichte-Rechner für Feststoffe", page_icon="📏", layout="centered")
@@ -45,6 +46,7 @@ with st.form("density_form"):
             st.success(f"✅ Die berechnete Dichte beträgt: {density:.2f} kg/m³")
         else:
             st.error("⚠️ Das Volumen muss größer als 0 sein!")
+
                      
 st.markdown("""
 ### 🧐 Wussten Sie schon?
