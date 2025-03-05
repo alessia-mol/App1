@@ -45,12 +45,11 @@ with st.form("density_form"):
             st.success(f"✅ Die berechnete Dichte beträgt: {density:.2f} kg/m³")
         else:
             st.error("⚠️ Das Volumen muss größer als 0 sein!")
-
-# Fun Fact oder Wissenswertes
+                     
 st.markdown("""
 ### 🧐 Wussten Sie schon?
-- Gold hat eine der höchsten Dichten von Metallen: 19.300 kg/m³.
-- Holzarten haben sehr unterschiedliche Dichten – Eiche ist viel dichter als Kiefer.
-- Materialien mit hoher Dichte werden oft für Schutzkleidung oder Strahlenschutz verwendet.
+- **Gold** hat eine der höchsten Dichten von Metallen: 19.300 kg/m³.
+- **Holzarten** haben sehr unterschiedliche Dichten – Eiche ist viel dichter als Kiefer.
+- **Eisberge** schwimmen im Wasser, weil Eis mit ca. 920 kg/m³ eine geringere Dichte als Wasser haben.
 """)
 
