@@ -36,7 +36,7 @@ with st.form("density_form"):
     mass = st.number_input("Masse (in kg)", min_value=0.0, format="%.2f", placeholder="Geben Sie die Masse ein")
     volume = st.number_input("Volumen (in m³)", min_value=0.0, format="%.4f", placeholder="Geben Sie das Volumen ein")
     
-    # Berechnung starten
+    # Berechnung 
     calculate = st.form_submit_button("🛠️ Berechnen")
     
     if calculate:
@@ -53,12 +53,12 @@ werte = [920, 19300, 600]  # Dichte in kg/m³ (Beispieldaten)
 # Berechneten Wert hinzufügen
 if calculate and volume > 0:
     berechnete_dichte = mass / volume
-    werte.append(round(berechnete_dichte, 1))
+    werte.append(round(berechnete_dichte, 2))
 else:
     werte.append(0)  # Platzhalterwert, falls keine Berechnung erfolgt
 
 # Erstelle DataFrame für Darstellung als Tabelle
-df = pd.DataFrame({'Materialien': materialien, 'Dichte (kg/m³)': werte})
+df = pd.DataFrame({'Materialien': materialien, 'Dichte (kg/m³)': [round(w, 2) for w in werte]})
 
 # Streamlit App
 st.markdown("### Vergleich der Dichten der Materialien")
@@ -68,8 +68,7 @@ st.dataframe(df)
 
 st.markdown("""
 ### 🧐 Wussten Sie schon?
-- **Gold** hat eine der höchsten Dichten von Metallen: 19'300 kg/m³.
-- **Holzarten** haben sehr unterschiedliche Dichten – Eiche ist viel dichter als Kiefer.
 - **Eisberge** schwimmen im Wasser, weil Eis mit ca. 920 kg/m³ eine geringere Dichte als Wasser haben.
-""")
+- **Gold** hat eine der höchsten Dichten von Metallen: 19'300 kg/m³.
+- **Holzarten** haben sehr unterschiedliche Dichten – Eiche ist viel dichter als Kiefer.""")
 
