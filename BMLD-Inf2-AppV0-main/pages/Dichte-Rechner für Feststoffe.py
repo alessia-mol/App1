@@ -4,7 +4,6 @@ import pandas as pd
 # Seiten-Layout
 st.set_page_config(page_title="Dichte-Rechner für Feststoffe", page_icon="📏", layout="centered")
 
-# Stil-Verbesserung mit Markdown und CSS
 st.markdown(
     """
     <style>
@@ -46,11 +45,44 @@ with st.form("density_form"):
             st.success(f"✅ Die berechnete Dichte beträgt: {density:.2f} kg/m³")
         else:
             st.error("⚠️ Das Volumen muss größer als 0 sein!")
+            
+import matplotlib.pyplot as plt
 
-                     
+# Vergleichsdaten
+materialien = ['Eis', 'Gold', 'Kiefer', 'Berechneter Wert']
+werte = [920, 19300, 600]  # Dichte in kg/m³ (Beispieldaten)
+
+# Berechneten Wert hinzufügen
+if calculate and volume > 0:
+    berechnete_dichte = mass / volume
+    werte.append(round(berechnete_dichte, 1))
+else:
+    werte.append(0)  # Platzhalterwert, falls keine Berechnung erfolgt
+
+# Farben
+farben = ['blue', 'gold', 'green', 'pink']
+
+df = pd.DataFrame({'Materialien': materialien, 'Wert': werte, 'Farbe': farben})
+
+# Streamlit App
+st.markdown("### Vergleichsdiagramm der Materialien")
+
+# Balkendiagramm
+fig, ax = plt.subplots()
+bars = ax.bar(df['Materialien'], df['Wert'], color=df['Farbe'])
+
+# Werte über die Balken schreiben
+for bar, wert in zip(bars, df['Wert']):
+    ax.text(bar.get_x() + bar.get_width() / 2, bar.get_height(), f'{wert}', ha='center', va='bottom')
+
+# Achsentitel hinzufügen
+ax.set_ylabel('Dichte (kg/m³)')
+
+st.pyplot(fig)
+
 st.markdown("""
 ### 🧐 Wussten Sie schon?
-- **Gold** hat eine der höchsten Dichten von Metallen: 19.300 kg/m³.
+- **Gold** hat eine der höchsten Dichten von Metallen: 19'300 kg/m³.
 - **Holzarten** haben sehr unterschiedliche Dichten – Eiche ist viel dichter als Kiefer.
 - **Eisberge** schwimmen im Wasser, weil Eis mit ca. 920 kg/m³ eine geringere Dichte als Wasser haben.
 """)
