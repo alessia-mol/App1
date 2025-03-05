@@ -46,8 +46,6 @@ with st.form("density_form"):
         else:
             st.error("⚠️ Das Volumen muss größer als 0 sein!")
             
-import matplotlib.pyplot as plt
-
 # Vergleichsdaten
 materialien = ['Eis', 'Gold', 'Kiefer', 'Berechneter Wert']
 werte = [920, 19300, 600]  # Dichte in kg/m³ (Beispieldaten)
@@ -59,26 +57,14 @@ if calculate and volume > 0:
 else:
     werte.append(0)  # Platzhalterwert, falls keine Berechnung erfolgt
 
-# Farben
-farben = ['blue', 'gold', 'green', 'pink']
-
-df = pd.DataFrame({'Materialien': materialien, 'Wert': werte, 'Farbe': farben})
+# Erstelle DataFrame für Darstellung als Tabelle
+df = pd.DataFrame({'Materialien': materialien, 'Dichte (kg/m³)': werte})
 
 # Streamlit App
-st.markdown("### Vergleichsdiagramm der Materialien")
+st.markdown("### Vergleich der Dichten der Materialien")
 
-# Balkendiagramm
-fig, ax = plt.subplots()
-bars = ax.bar(df['Materialien'], df['Wert'], color=df['Farbe'])
-
-# Werte über die Balken schreiben
-for bar, wert in zip(bars, df['Wert']):
-    ax.text(bar.get_x() + bar.get_width() / 2, bar.get_height(), f'{wert}', ha='center', va='bottom')
-
-# Achsentitel hinzufügen
-ax.set_ylabel('Dichte (kg/m³)')
-
-st.pyplot(fig)
+# Tabelle anzeigen
+st.dataframe(df)
 
 st.markdown("""
 ### 🧐 Wussten Sie schon?
