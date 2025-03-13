@@ -1,8 +1,14 @@
 import streamlit as st
-import pandas as pd
-
 # Seiten-Layout
 st.set_page_config(page_title="Dichte-Rechner für Feststoffe", page_icon="📏", layout="centered")
+
+# ====== Start Login Block ======
+from utils.login_manager import LoginManager
+LoginManager().go_to_login('Start.py') 
+# ====== End Login Block ======
+
+import pandas as pd
+from functions.Dichte_calculator import berechne_dichte
 
 st.markdown(
     """
@@ -40,11 +46,11 @@ with st.form("density_form"):
     calculate = st.form_submit_button("🛠️ Berechnen")
     
     if calculate:
-        if volume > 0:
-            density = mass / volume
-            st.success(f"✅ Die berechnete Dichte beträgt: {density:.2f} kg/m³")
-        else:
-            st.error("⚠️ Das Volumen muss größer als 0 sein!")
+        result = berechne_dichte(mass, volume)
+   
+        # --- Save Dichte data ---
+        from utils.data_manager import DataManager
+        DataManager().append_record(session_state_key='data_df', record_dict=result)  # update data in session state and storage 
             
 # Vergleichsdaten
 materialien = ['Eis', 'Gold', 'Kiefer', 'Berechneter Wert']
@@ -71,4 +77,6 @@ st.markdown("""
 - **Eisberge** schwimmen im Wasser, weil Eis mit ca. 920 kg/m³ eine geringere Dichte als Wasser haben.
 - **Gold** hat eine der höchsten Dichten von Metallen: 19'300 kg/m³.
 - **Holzarten** haben sehr unterschiedliche Dichten – Eiche ist viel dichter als Kiefer.""")
+
+
 
