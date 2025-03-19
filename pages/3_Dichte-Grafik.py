@@ -14,17 +14,17 @@ if data_df.empty:
     st.info('Keine Dichte Daten vorhanden. Berechnen Sie die Dichte auf der Startseite.')
     st.stop()
 
-# Weight over time
+# Masse über Zeit
+st.subheader('Masse über Zeit (kg)')
 st.line_chart(data=data_df.set_index('timestamp')['Masse'], 
                 use_container_width=True)
-st.caption('Masse über Zeit (kg)')
 
-# Height over time 
+# Volumen über Zeit
+st.subheader('Volumen über Zeit (m³)')
 st.line_chart(data=data_df.set_index('timestamp')['Volumen'],
                 use_container_width=True)
-st.caption('Volumen über Zeit (m³)')
 
-# BMI over time
+# Dichte über Zeit
+st.subheader('Dichte über Zeit (kg/m³)')
 st.line_chart(data=data_df.set_index('timestamp')['Dichte'],
                 use_container_width=True)
-st.caption('Dichte über Zeit')
